@@ -1,0 +1,13 @@
+{
+  "name": "node-download-manager",
+  "version": "0.0.1",
+  "description": "File download manager using node.ts",
+  "main": "dist/main.ts",
+  "repository": "https://github.com/Tenotea/node-download-manager.git",
+  "author": "tenotea",
+  "license": "MIT",
+  "private": false,
+  "dependencies": {
+    "yargs": "^17.4.1"
+  }
+}
