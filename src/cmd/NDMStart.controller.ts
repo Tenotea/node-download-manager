@@ -2,28 +2,34 @@ import inquirer from 'inquirer';
 import yargs from 'yargs';
 
 export default class NDMStart {
-  constructor () {
-    // this.start()
-  }
-  
+
   static builder (yargs: yargs.Argv<{}>) {
-    yargs.option('u', {
-      alias: 'url',
+    yargs.option('url', {
+      alias: 'u',
       describe: 'Pass this value and the file will begin downloading.'
     })
   }
 
-  static handler (argv: yargs.Arguments) {
-    console.log(argv)
-    const url = argv?.u || argv?.url
-    if (!url) {
-      inquirer.prompt([
-        'Provide a URL: ',
-        'Provide a file name'
-      ]).then(answers => {
-        console.log(answers);
-      })
+  static async handler (argv: yargs.Arguments) {
+    let args = argv
+
+    if (!args.url) {
+      args.url = (await inquirer.prompt([
+        {
+          type: 'input',
+          name: 'url',
+          message: 'Please provide a url: '
+        },
+      ])).url
     }
-    console.log("You already provided a URL")
+
+    args.fileName = (await inquirer.prompt([
+      {
+        type: 'input',
+        name: 'fileName',
+        message: 'Change file name?',
+        default: args.url
+      }
+    ])).fileName
   }
 }

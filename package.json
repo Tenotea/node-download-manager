@@ -9,11 +9,13 @@
   "private": false,
   "scripts": {
     "dev": "node dist/main.js",
-    "dev::build": "tsc"
+    "dev::build": "tsc && npm install -g .",
+    "dev::uninstall": "npm uninstall -g .",
+    "build": "tsc"
   },
   "bin": {
     "ndm": "./dist/main.js"
-  }, 
+  },
   "dependencies": {
     "inquirer": "^8.2.2",
     "yargs": "^17.4.1"
