@@ -1,6 +1,5 @@
 #!/usr/bin/env node
 
-import { hideBin } from 'yargs/helpers'
 import yargs from 'yargs'
 import NDMStart from './cmd/NDMStart.controller';
 
