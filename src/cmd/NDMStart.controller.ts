@@ -1,5 +1,7 @@
 import inquirer from 'inquirer';
 import yargs from 'yargs';
+import ObjectDownloader from '../helpers/ObjectDownloader';
+import { ObjectDownloaderPayload } from '../types/ObjectDowloader.interface';
 
 export default class NDMStart {
 
@@ -11,7 +13,7 @@ export default class NDMStart {
   }
 
   static async handler (argv: yargs.Arguments) {
-    let args = argv
+    let args = argv as unknown as ObjectDownloaderPayload
 
     if (!args.url) {
       args.url = (await inquirer.prompt([
@@ -31,5 +33,10 @@ export default class NDMStart {
         default: args.url
       }
     ])).fileName
+
+  new ObjectDownloader().download( args)
+
   }
+
+
 }
